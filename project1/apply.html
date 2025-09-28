@@ -14,6 +14,107 @@
         <a href="apply.html">Apply Here</a>
         <a href="about.html">About</a>
     </nav>
+
+    <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
+        <fieldset>
+            <legend>Job Reference Number</legend>
+            <select id="ref_num" name="ref_num" required="required">
+                <option value="">Please Select</option>
+                <option value="GTX01" name="GTX01" id="GTX01">GTX01 - Data Analyst</option>
+                <option value="GTX02" name="GTX02" id="GTX02">GTX02 - Software Developer</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Personal details</legend>
+            <p>
+                <label for="firstname">First Name</label>
+                <input pattern="[a-zA-Z]*" oninvalid="setCustomValidity('Please enter on alphabets only. ')" onchange="this.setCustomValidity('')" type="text" name="firstname" id="firstname" maxlength="20" required="required">
+                <label for="lastname">Last Name</label>
+                <input pattern="[a-zA-Z]*" oninvalid="setCustomValidity('Please enter on alphabets only. ')" onchange="this.setCustomValidity('')" type="text" name="lastname" id="lastname" maxlength="20" required="required">
+            </p>
+            <p>
+                <label for="email">Email</label>
+                <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="setCustomValidity('Please enter correct email format ')" onchange="this.setCustomValidity('')" type="email" name="email" id="email" required="required"> <!--Found email pattern reference here:https://stackoverflow.com/questions/5601647/html5-email-address-input-pattern-attribute> -->
+                <label for="phonenumber">Phone Number</label>
+                <input pattern="[0-9\s]{8,12}" oninvalid="setCustomValidity('Must be 8 to 12 digits, or spaces ')" onchange="this.setCustomValidity('')" type="text" name="phonenumber" id="phonenumber" required="required">
+            </p>
+            <label for="dob">Date of birth</label>
+                <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" name="dob" id="dob" placeholder="dd/mm/yyyy">
+        </fieldset>
+
+        <fieldset>
+            <legend>Gender</legend>
+            <p>
+                <input type="radio" name="gender" id="male" value="male" required="required">
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="female" value="female" required="required">
+                <label for="female">Female</label>
+                <input type="radio" name="gender" id="other" value="other" required="required">
+                <label for="other">Other</label>
+            </p>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Personal Address</legend>
+                <p>
+                    <label for="street">Street Address</label>
+                    <input pattern="^[a-zA-Z0-9_ ]+$" oninvalid="setCustomValidity('Please enter on alphabets and/or numbers only. ')" onchange="this.setCustomValidity('')" type="text" name="street" id="street" maxlength="40" required="required">
+                    <label for="sub_town">Suburb/town</label>
+                    <input pattern="^[a-zA-Z0-9_ ]+$" oninvalid="setCustomValidity('Please enter on alphabets and/or numbers only. ')" onchange="this.setCustomValidity('')" type="text" name="sub_town" id="sub_town" maxlength="40" required="required">
+                </p>
+                <p>
+                    <label for="state">State</label>
+                        <select id="state" name="state" required="required">
+                            <option value="">Please Select</option>
+                            <option value="VIC" name="VIC" id="VIC">VIC</option>
+                            <option value="NSW" name="NSW" id="NSW">NSW</option>
+                            <option value="QLD" name="QLD" id="QLD">QLD</option>
+                            <option value="NT" name="NT" id="NT">NT</option>
+                            <option value="WA" name="WA" id="WA">WA</option>
+                            <option value="SA" name="SA" id="SA">SA</option>
+                            <option value="TAS" name="TAS" id="TAS">TAS</option>
+                            <option value="ACT" name="ACT" id="ACT">ACT</option>
+                        </select>
+                    <label for="postcode">Postcode</label>
+                    <input pattern="[0-9]{4}" oninvalid="setCustomValidity('Please enter 4 characters number only. ')" onchange="this.setCustomValidity('')" type="text" name="postcode" id="postcode" maxlength="4" minlength="4" required="required">
+                </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Required Technical List</legend>
+                <p>
+                    <label for="sql">SQL</label>
+                    <input type="checkbox" id="sql" name="category[]" value="sql">
+                    <label for="excel">Excel</label>
+                    <input type="checkbox" id="excel" name="category[]" value="excel">
+                    <label for="r">R</label>
+                    <input type="checkbox" id="r" name="category[]" value="r">
+                    <label for="python">Python</label>
+                    <input type="checkbox" id="python" name="category[]" value="python">
+                    <label for="tableau">Tableau</label>
+                    <input type="checkbox" id="tableau" name="category[]" value="tableau">
+                    <label for="powerbi">Power BI</label>
+                    <input type="checkbox" id="powerbi" name="category[]" value="powerbi">
+                    <label for="java">Java</label>
+                    <input type="checkbox" id="java" name="category[]" value="java">
+                    <label for="javascript">Javascript</label>
+                    <input type="checkbox" id="javascript" name="category[]" value="javascript">
+                    <label for="csharp">C#</label>
+                    <input type="checkbox" id="csharp" name="category[]" value="csharp">
+                    <label for="git">Git</label>
+                    <input type="checkbox" id="Git" name="category[]" value="Git">
+                </p>
+                <p>
+                    <label for="otherskills">Other Skills</label>
+                    <br>
+                    <textarea id="otherskills" name="otherskills" rows="4" cols="40"></textarea>
+                </p>
+        </fieldset>
+        <input type="submit" value="Apply">
+	    <input type="reset" value="Reset Application">
+    </form>
+
     <footer>
         <p><a>Email: </a><a href="mailto:info@companyname.com.au"> info@companyname.com.au</a></p>
         <p><a>Jira link: </a><a href="https://sanglephuocthanh.atlassian.net/jira/software/projects/GPP1/boards/34?atlOrigin=eyJpIjoiOGJjY2NjZDI5YzNhNDRjZjgwNmUwMjZjZjIyNmY0NDQiLCJwIjoiaiJ9"> Group Plan</a></p>
