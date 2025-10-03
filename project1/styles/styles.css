@@ -60,6 +60,8 @@ aside:hover {
     display: none;
 }
 
+
+
 /* .header img {
   float: left;
   width: 100px;
@@ -98,4 +100,76 @@ aside:hover {
 
 h1{
     margin-right: 30px;
+}
+
+/* css for buttons */
+
+input[type="text"] {
+    padding: 0.5%;
+    margin: 1%;
+}
+
+input[type="password"] {
+    padding: 0.5%;
+    margin: 1%;
+}
+
+input[type="email"] {
+    padding: 0.5%;
+    margin: 1%;
+}
+
+input[type="submit"] {
+    padding: 0.5%;
+    margin: 1%;
+}
+
+input[type="checkbox"] {
+    padding: 0.5%;
+    margin: 1%;
+}
+
+input[type="radio"] {
+    padding: 0.5%;
+    margin: 1%;
+}
+
+input[type="reset"]{
+    padding: 0.5%;
+    margin: 1%;
+}
+
+select{
+    padding: 0.5%;
+    margin: 1%;
+}
+
+option {
+    padding: 0.5%;
+    margin: 1%;
+}
+
+option :checked{
+    padding: 0.5%;
+    margin: 1%;
+}
+
+/* Styles for larger screens (e.g., desktops) */
+.container {
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns */
+    gap: 20px;
+}
+
+/* Styles for medium screens (e.g., tablets) */
+@media (max-width: 768px) {
+  .container {
+        grid-template-columns: 1fr 1fr; /* Two columns */
+  }
+}
+
+/* Styles for small screens (e.g., mobile phones) */
+@media (max-width: 480px) {
+  .container {
+        grid-template-columns: 1fr; /* Single column */
+  }
 }
