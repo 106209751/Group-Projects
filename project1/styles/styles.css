@@ -3,6 +3,7 @@ Wut
 */
 
 h1, .main-title {
+    margin-right: 30px;
     color: rgb(0, 128, 128);
     font-size: 3em;
     font-weight: bold;
@@ -98,9 +99,6 @@ aside:hover {
    text-align:center;
 }
 
-h1{
-    margin-right: 30px;
-}
 
 /* css for buttons */
 
