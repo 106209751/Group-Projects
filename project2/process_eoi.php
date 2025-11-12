@@ -75,7 +75,7 @@ if (mysqli_query($conn, $insert)) {
     $eoi_number = mysqli_insert_id($conn);
     echo "<h2>Application Submitted Successfully!</h2>";
     echo "<p>Your EOI number is: <strong>$eoi_number</strong></p>";
-    echo '<p><a href="../project2/index.php">Return to Home</a></p>';
+    echo '<p><a href="index.php">Return to Home</a></p>';
 } else {
     echo "<p>Oops! Something went wrong. Please try again later.</p>";
 }
