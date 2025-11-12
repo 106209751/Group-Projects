@@ -10,10 +10,10 @@
 <body>
     <?php include 'header.inc'; ?>
 
-    <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
+    <form action="process_eoi.php" method="post" novalidate="novalidate">
         <fieldset>
             <legend>Job Reference Number</legend>
-            <select id="ref_num" name="ref_num" required="required">
+            <select id="job_ref" name="job_ref" required="required">
                 <option value="">Please Select</option>
                 <option value="GTX01" name="GTX01" id="GTX01">GTX01 - Data Analyst</option>
                 <option value="GTX02" name="GTX02" id="GTX02">GTX02 - Software Developer</option>
@@ -31,8 +31,8 @@
             <p>
                 <label for="email">Email</label>
                 <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="setCustomValidity('Please enter correct email format ')" onchange="this.setCustomValidity('')" type="email" name="email" id="email" required="required"> <!--Found email pattern reference here:https://stackoverflow.com/questions/5601647/html5-email-address-input-pattern-attribute> -->
-                <label for="phonenumber">Phone Number</label>
-                <input pattern="[0-9\s]{8,12}" oninvalid="setCustomValidity('Must be 8 to 12 digits, or spaces ')" onchange="this.setCustomValidity('')" type="text" name="phonenumber" id="phonenumber" required="required">
+                <label for="phone">Phone Number</label>
+                <input pattern="[0-9\s]{8,12}" oninvalid="setCustomValidity('Must be 8 to 12 digits, or spaces ')" onchange="this.setCustomValidity('')" type="text" name="phone" id="phone" required="required">
             </p>
             <label for="dob">Date of birth</label>
                 <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" name="dob" id="dob" placeholder="dd/mm/yyyy">
@@ -55,8 +55,8 @@
                 <p>
                     <label for="street">Street Address</label>
                     <input pattern="^[a-zA-Z0-9_ ]+$" oninvalid="setCustomValidity('Please enter on alphabets and/or numbers only. ')" onchange="this.setCustomValidity('')" type="text" name="street" id="street" maxlength="40" required="required">
-                    <label for="sub_town">Suburb/town</label>
-                    <input pattern="^[a-zA-Z0-9_ ]+$" oninvalid="setCustomValidity('Please enter on alphabets and/or numbers only. ')" onchange="this.setCustomValidity('')" type="text" name="sub_town" id="sub_town" maxlength="40" required="required">
+                    <label for="suburb">Suburb/town</label>
+                    <input pattern="^[a-zA-Z0-9_ ]+$" oninvalid="setCustomValidity('Please enter on alphabets and/or numbers only. ')" onchange="this.setCustomValidity('')" type="text" name="suburb" id="suburb" maxlength="40" required="required">
                 </p>
                 <p>
                     <label for="state">State</label>
@@ -79,31 +79,31 @@
         <fieldset>
             <legend>Required Technical List</legend>
                 <p>
-                    <input type="checkbox" id="sql" name="category[]" value="sql">
+                    <input type="checkbox" id="sql" name="skills[]" value="sql">
                     <label for="sql">SQL</label>
-                    <input type="checkbox" id="excel" name="category[]" value="excel">
+                    <input type="checkbox" id="excel" name="skills[]" value="excel">
                     <label for="excel">Excel</label>
-                    <input type="checkbox" id="r" name="category[]" value="r">
+                    <input type="checkbox" id="r" name="skills[]" value="r">
                     <label for="r">R</label>
-                    <input type="checkbox" id="python" name="category[]" value="python">
+                    <input type="checkbox" id="python" name="skills[]" value="python">
                     <label for="python">Python</label>
-                    <input type="checkbox" id="tableau" name="category[]" value="tableau">
+                    <input type="checkbox" id="tableau" name="skills[]" value="tableau">
                     <label for="tableau">Tableau</label>
-                    <input type="checkbox" id="powerbi" name="category[]" value="powerbi">
+                    <input type="checkbox" id="powerbi" name="skills[]" value="powerbi">
                     <label for="powerbi">Power BI</label>
-                    <input type="checkbox" id="java" name="category[]" value="java">
+                    <input type="checkbox" id="java" name="skills[]" value="java">
                     <label for="java">Java</label>
-                    <input type="checkbox" id="javascript" name="category[]" value="javascript">
+                    <input type="checkbox" id="javascript" name="skills[]" value="javascript">
                     <label for="javascript">Javascript</label>
-                    <input type="checkbox" id="csharp" name="category[]" value="csharp">
+                    <input type="checkbox" id="csharp" name="skills[]" value="csharp">
                     <label for="csharp">C#</label>
-                    <input type="checkbox" id="Git" name="category[]" value="Git">
+                    <input type="checkbox" id="Git" name="skills[]" value="Git">
                     <label for="git">Git</label>
                 </p>
                 <p>
-                    <label for="otherskills">Other Skills</label>
+                    <label for="other_skills">Other Skills</label>
                     <br>
-                    <textarea id="otherskills" name="otherskills" rows="4" cols="40"></textarea>
+                    <textarea id="other_skills" name="other_skills" rows="4" cols="40"></textarea>
                 </p>
         </fieldset>
         
