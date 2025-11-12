@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The home page about a IT company that's about to go bankrupt">
-    <meta name="author" content="logmilo and QuangAnhLuu">
-    <meta name="keywords" content="IT, jobs, open">
     <link href="styles/styles.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/Companylogo.png">
     <title>Home</title>
@@ -17,18 +14,7 @@
             background-image:url(images/whiteBackground.jpg)
         }
     </style>
-    <div class="header">
-        <div class="logo"><img src="https://106209751.github.io/Group-Projects/project1/images/Companylogo.png" alt="Company Logo" width="250" height="250"></div>
-        <div><h1><strong>Home</strong></h1></div>
-        <div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="jobs.html">Jobs</a>
-                <a href="apply.html">Apply Here</a>
-                <a href="about.html">About</a>
-            </nav>
-        </div>
-    </div>
+    <?php include 'header.inc'; ?>
     <div>
         <h2>Description</h2>
         <p>This company aims to work with outstanding individuals to make impossible become possible.</p>
