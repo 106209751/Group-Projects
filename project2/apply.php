@@ -8,19 +8,7 @@
     <title>Apply</title>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-        <div class="logo"><img src="https://106209751.github.io/Group-Projects/project1/images/Companylogo.png" alt="Company Logo" width="250" height="250"></div>
-        <div><h1><strong>Application</strong></h1></div>
-        <div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="jobs.html">Jobs</a>
-                <a href="apply.html">Apply Here</a>
-                <a href="about.html">About</a>
-            </nav>
-        </div>
-    </div>
+    <?php include 'header.inc'; ?>
 
     <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
         <fieldset>
