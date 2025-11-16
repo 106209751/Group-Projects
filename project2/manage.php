@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
             
         case 'list_by_applicant':
-            $first_name = "%{sanitize($_POST['first_name'])}%";
-            $last_name = "%{sanitize($_POST['last_name'])}%";
+            $first_name = "%{sanitize{$_POST['first_name']}}%";
+            $last_name = "%{sanitize{$_POST['last_name']}}%";
             $result = executeQuery($conn, "SELECT * FROM eoi WHERE first_name LIKE ? AND last_name LIKE ?", [$first_name, $last_name], "ss");
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
