@@ -1,3 +1,20 @@
+<?php
+require_once("settings.php");
+
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+if (!$conn) {
+    die("Cannot connect to database");
+}
+
+$query = "SELECT * FROM jobs ORDER BY posted_at DESC";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Error getting jobs: " . mysqli_error($conn));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,12 +41,39 @@
             text-align: center;
             width: 100%;
         }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .jobs-title { margin-top: 40px; }
     </style>
 
     <?php include 'header.inc'; ?>
 
+
+    <?php
+    if (mysqli_num_rows($result) > 0) {
+        echo "<h2 class='jobs-title'>All Jobs</h2>";
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Job Ref</th><th>Title</th><th>Description</th><th>Posted At</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            $posted = date('Y-m-d H:i', strtotime($row['posted_at']));
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['job_ref']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['title']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['description']) . "</td>";
+            echo "<td>" . htmlspecialchars($posted) . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No jobs available right now.</p>";
+    }
+    mysqli_close($conn);
+    ?>
+
     <section class="job-section">
-        <h2 class="job-title">Data Analyst (GXY-01)</h2>
+        <h2 class="job-title">Data Analyst (GTX-01)</h2>
         <aside class="job-aside">Data Analysts collect, process, and analyze data to help organizations make informed business decisions.</aside>
         <ol class="job-list">
             <li class="job-list-item"><h3 class="job-heading">Salary range</h3></li>
@@ -113,6 +157,7 @@
             </ul>
         </ol>
     </section>
+
     <?php include 'footer.inc'; ?>
     </div>
 </body>

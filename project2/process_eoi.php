@@ -38,7 +38,7 @@ function sanitize($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
-$job_ref = sanitize($_POST["job_ref"]);
+$job_ref = $_POST["job_ref"];
 $firstname = sanitize($_POST["firstname"]);
 $lastname = sanitize($_POST["lastname"]);
 $street = sanitize($_POST["street"]);
