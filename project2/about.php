@@ -49,7 +49,7 @@
                 </td>
                 <td class="id">SWH03150</td>
                 <td>Web developing, Playing games</td>
-                <td>Homepage and jobs page confirguration, CSS styles</td>
+                <td>Homepage and jobs page confirguration, CSS styles,EOIs table,Database works</td>
             </tr>
             <tr>
                 <td>
@@ -57,7 +57,7 @@
                 </td>
                 <td class="id">SWH03105</td>
                 <td>Web developing, Singing, Hanging out</td>
-                <td>Apply page and about page confirguration, CSS styles</td>
+                <td>Apply page and about page confirguration, CSS styles,Creating management function,Enhancements for the website</td>
             </tr>
         </table>
     <?php include 'footer.inc'; ?>
