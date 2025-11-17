@@ -140,6 +140,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager Login</title>
     <style>
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .home-button a {
+            display: inline-block;
+            padding: 10px 16px;
+            background-color: #607D8B;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .home-button a:hover {
+            background-color: #546E7A;
+        }
         body {
             font-family: Arial, sans-serif;
             max-width: 500px;
@@ -214,6 +231,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
+    <div class="home-button">
+        <a href="index.php">&larr; Return to Home</a>
+    </div>
     <div class="container">
         <h1>Manager Login</h1>
         
