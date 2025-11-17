@@ -15,8 +15,8 @@
             <legend>Job Reference Number</legend>
             <select id="job_ref" name="job_ref" required="required">
                 <option value="">Please Select</option>
-                <option value="GTX01" name="GTX01" id="GTX01">GTX01 - Data Analyst</option>
-                <option value="GTX02" name="GTX02" id="GTX02">GTX02 - Software Developer</option>
+                <option value="GXY-01">GXY-01 - Data Analyst</option>
+                <option value="GTX-02">GTX-02 - Software Developer</option>
             </select>
         </fieldset>
 

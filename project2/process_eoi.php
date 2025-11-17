@@ -12,10 +12,9 @@ if (!$conn) {
     die("<p>Database Connection Failed</p>");
 }
 
-
 $create_table = "CREATE TABLE IF NOT EXISTS eoi (
     EOInumber INT AUTO_INCREMENT PRIMARY KEY,
-    job_ref VARCHAR(5) NOT NULL,
+    job_ref VARCHAR(10) NOT NULL,
     firstname VARCHAR(20) NOT NULL,
     lastname VARCHAR(20) NOT NULL,
     street VARCHAR(40) NOT NULL,
@@ -31,6 +30,9 @@ $create_table = "CREATE TABLE IF NOT EXISTS eoi (
 
 mysqli_query($conn, $create_table);
 
+// If table already exists with VARCHAR(5), alter it to VARCHAR(10)
+$alter_query = "ALTER TABLE eoi MODIFY job_ref VARCHAR(10) NOT NULL";
+@mysqli_query($conn, $alter_query); // @ suppresses error if already correct
 
 function sanitize($data) {
     return htmlspecialchars(stripslashes(trim($data)));
@@ -45,7 +47,8 @@ $state = sanitize($_POST["state"]);
 $postcode = sanitize($_POST["postcode"]);
 $email = sanitize($_POST["email"]);
 $phone = sanitize($_POST["phone"]);
-$skills = implode(", ", $_POST['skills']);
+// Fix: Check if skills array exists before using it
+$skills = isset($_POST['skills']) ? implode(", ", $_POST['skills']) : "";
 $other_skills = sanitize($_POST["other_skills"] ?? "");
 $errors = [];
 
@@ -63,6 +66,18 @@ if (!empty($errors)) {
     exit();
 }
 
+// Fix: Escape all variables for SQL to prevent injection
+$job_ref = mysqli_real_escape_string($conn, $job_ref);
+$firstname = mysqli_real_escape_string($conn, $firstname);
+$lastname = mysqli_real_escape_string($conn, $lastname);
+$street = mysqli_real_escape_string($conn, $street);
+$suburb = mysqli_real_escape_string($conn, $suburb);
+$state = mysqli_real_escape_string($conn, $state);
+$postcode = mysqli_real_escape_string($conn, $postcode);
+$email = mysqli_real_escape_string($conn, $email);
+$phone = mysqli_real_escape_string($conn, $phone);
+$skills = mysqli_real_escape_string($conn, $skills);
+$other_skills = mysqli_real_escape_string($conn, $other_skills);
 
 $insert = "INSERT INTO eoi
 (job_ref, firstname, lastname, street, suburb, state, postcode, email, phone, 
@@ -78,6 +93,7 @@ if (mysqli_query($conn, $insert)) {
     echo '<p><a href="index.php">Return to Home</a></p>';
 } else {
     echo "<p>Oops! Something went wrong. Please try again later.</p>";
+    echo "<p>Error: " . mysqli_error($conn) . "</p>";
 }
 
 mysqli_close($conn);
