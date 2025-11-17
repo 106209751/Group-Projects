@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 17, 2025 lúc 07:14 AM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.0.30
+-- Host: 127.0.0.1
+-- Generation Time: Nov 17, 2025 at 12:46 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `provocate`
+-- Database: `provocate`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `eoi`
+-- Table structure for table `eoi`
 --
 
 CREATE TABLE `eoi` (
@@ -43,10 +43,19 @@ CREATE TABLE `eoi` (
   `status` enum('New','Current','Final') DEFAULT 'New'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `eoi`
+--
+
+INSERT INTO `eoi` (`EOInumber`, `job_ref`, `firstname`, `lastname`, `street`, `suburb`, `state`, `postcode`, `email`, `phone`, `skills`, `other_skills`, `status`) VALUES
+(7, 'GTX-01', 'test', 'test', 'test', 'town', 'NSW', '1000', 'test@gmail.com', '0903661934', 'python, tableau, powerbi, java', 'yoma', 'New'),
+(8, 'GTX-02', 'testt', 'testt', 'testt', 'testt', 'NSW', '1000', 'testt@gmail.com', '0901234644', 'r, python, tableau', '', 'New'),
+(9, 'GTX-02', 'testt', 'testt', 'testt', 'testt', 'WA', '1000', 'testt@gmail.com', '0912344444', 'excel, r, python', '', 'New');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `jobs`
+-- Table structure for table `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -58,17 +67,17 @@ CREATE TABLE `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `jobs`
+-- Dumping data for table `jobs`
 --
 
 INSERT INTO `jobs` (`id`, `job_ref`, `title`, `description`, `posted_at`) VALUES
-(1, 'GXY-01', 'Data Analyst (GXY-01)', 'Data Analysts collect, process, and analyze data to help organizations make informed business decisions.', '2025-11-14 02:52:37'),
-(2, 'GTX-02', 'Software Developer (GTX-02)', 'Software Developers design, develop, and maintain software applications to meet user needs and business requirements.', '2025-11-14 02:52:37');
+(1, 'GTX-01', 'Data Analyst', 'Data Analysts collect, process, and analyze data to help organizations make informed business decisions.', '2025-11-14 02:52:37'),
+(2, 'GTX-02', 'Software Developer', 'Software Developers design, develop, and maintain software applications to meet user needs and business requirements.', '2025-11-14 02:52:37');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `login_attempts`
+-- Table structure for table `login_attempts`
 --
 
 CREATE TABLE `login_attempts` (
@@ -78,10 +87,17 @@ CREATE TABLE `login_attempts` (
   `success` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`attempt_id`, `ip_address`, `attempt_time`, `success`) VALUES
+(2, '::1', '2025-11-17 08:03:54', 1);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `managers`
+-- Table structure for table `managers`
 --
 
 CREATE TABLE `managers` (
@@ -92,62 +108,68 @@ CREATE TABLE `managers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Dumping data for table `managers`
+--
+
+INSERT INTO `managers` (`manager_id`, `username`, `password`, `created_at`) VALUES
+(1, 'admin', '$2y$10$nOlDooWzEUMqF7auIL89IODuFyhPj.i3oQim8krJC0hMSte./qZEC', '2025-11-17 08:03:20');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `eoi`
+-- Indexes for table `eoi`
 --
 ALTER TABLE `eoi`
   ADD PRIMARY KEY (`EOInumber`);
 
 --
--- Chỉ mục cho bảng `jobs`
+-- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `job_ref` (`job_ref`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `login_attempts`
+-- Indexes for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`attempt_id`);
 
 --
--- Chỉ mục cho bảng `managers`
+-- Indexes for table `managers`
 --
 ALTER TABLE `managers`
   ADD PRIMARY KEY (`manager_id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `eoi`
+-- AUTO_INCREMENT for table `eoi`
 --
 ALTER TABLE `eoi`
-  MODIFY `EOInumber` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EOInumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `jobs`
+-- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `login_attempts`
+-- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `managers`
+-- AUTO_INCREMENT for table `managers`
 --
 ALTER TABLE `managers`
-  MODIFY `manager_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `manager_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
